@@ -1,3 +1,5 @@
+import { routing } from './app.routes';
+import { PainelModule } from './painel/painel.module';
 import { Http } from '@angular/http';
 import { FotoModule } from './foto/foto.module';
 import { NgModule } from '@angular/core';
@@ -6,9 +8,18 @@ import { AppComponent } from './app.component';
 import { HttpModule} from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { ListagemComponent } from './listagem/listagem.component';
+
 @NgModule({
-    imports: [BrowserModule, FotoModule, HttpModule],
-    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        FotoModule,
+        HttpModule,
+        PainelModule,
+        routing
+    ],
+    declarations: [AppComponent, CadastroComponent, ListagemComponent],
     bootstrap:[AppComponent]
 
 })
