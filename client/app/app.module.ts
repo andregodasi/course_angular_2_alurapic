@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpModule} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {FormsModule} from '@angular/forms'
 
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ListagemComponent } from './listagem/listagem.component';
@@ -17,7 +18,8 @@ import { ListagemComponent } from './listagem/listagem.component';
         FotoModule,
         HttpModule,
         PainelModule,
-        routing
+        routing,
+        FormsModule
     ],
     declarations: [AppComponent, CadastroComponent, ListagemComponent],
     bootstrap:[AppComponent]
