@@ -1,4 +1,4 @@
-import { Http, Headers} from '@angular/http';
+import { FotoService } from './../foto/foto.service';
 import { FotoComponent } from './../foto/foto.component';
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
@@ -13,10 +13,10 @@ import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 
 export class CadastroComponent{
     foto:FotoComponent = new FotoComponent();
-    http:Http;
     meuForm:FormGroup;
-    constructor(http:Http, fb:FormBuilder){
-        this.http = http;
+    service:FotoService;
+    constructor( service:FotoService, fb:FormBuilder){
+        this.service = service;
         this.meuForm = fb.group({
             titulo:['', Validators.compose([Validators.required, Validators.minLength(4)])],
             url:['', Validators.required],
@@ -25,9 +25,9 @@ export class CadastroComponent{
     }
     cadastrar(event){
         event.preventDefault();
-        let headers = new Headers();
-        headers.append('Content-type', 'application/json')
-        this.http.post('v1/fotos',JSON.stringify(this.foto),{ headers:headers}).
+       
+       
+        this.service.cadastra(this.foto).
         subscribe(()=>{
             console.log(this.foto);
             this.foto = new FotoComponent()
