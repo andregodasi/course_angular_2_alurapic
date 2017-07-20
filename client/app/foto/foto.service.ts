@@ -25,4 +25,8 @@ export class FotoService{
         return this.http.post(this.url, JSON.stringify(foto),
             { headers:this.headers });
     }
+
+    remove(foto:FotoComponent){
+        return this.http.delete(foto + '/' + foto._id);
+    }
 }
