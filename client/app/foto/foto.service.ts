@@ -12,7 +12,7 @@ export class FotoService{
     constructor(http:Http){
         this.http = http;
         this.headers = new Headers();
-        this.headers.append('Content-Type','applicatopn/json');
+        this.headers.append('Content-Type','application/json');
 
     }
 
@@ -27,6 +27,7 @@ export class FotoService{
     }
 
     remove(foto:FotoComponent){
-        return this.http.delete(foto + '/' + foto._id);
+        
+        return this.http.delete(this.url + '/' + foto._id);
     }
 }

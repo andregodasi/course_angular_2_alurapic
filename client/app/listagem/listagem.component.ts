@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 export class ListagemComponent{
     fotos:FotoComponent[] = [];
     service:FotoService;
+    mensagem:string = '';
     constructor(service:FotoService){
        this.service = service;
        service.lista()
@@ -21,8 +22,17 @@ export class ListagemComponent{
     remove(foto:FotoComponent){
         this.service.remove(foto)
             .subscribe(
-                fotos =>console.log(fotos),
-                erro => console.log(erro)
+                () => {
+                    let novasFotos = this.fotos.slice(0);
+                    let indice = novasFotos.indexOf(foto);
+                    novasFotos.splice(indice,1);
+                    this.fotos = novasFotos;
+                    this.mensagem = 'Foto removida com sucesso.';
+                },
+                erro => {
+                    console.log(erro);
+                    this.mensagem = 'Não foi possível remover a foto.';
+                }
             )
     }
 }
